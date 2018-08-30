@@ -1,0 +1,19 @@
+
+.ellip{
+     overflow: hidden;
+     display: -webkit-box;
+     -webkit-line-clamp: 1;
+     -webkit-box-orient: vertical;
+     text-overflow: ellipsis;
+}
+.fl {
+    float:left;
+}
+.fr{
+    float:right;
+}
+.center{
+    width:1200px;
+    height:100%;
+    margin:0 auto;
+}

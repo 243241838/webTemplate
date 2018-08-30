@@ -14,6 +14,3 @@ export default ()=> {
 
   return promise;
 };
-function aa () {
-  
-}

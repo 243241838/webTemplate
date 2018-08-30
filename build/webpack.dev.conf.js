@@ -45,12 +45,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     }
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': require('../config/dev.env')
+    new webpack.DefinePlugin({ // 编译时配置的全局变量
+      'process.env': require('../config/dev.env') //当前环境为开发环境
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
-    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.HotModuleReplacementPlugin(), //热更新插件
+    new webpack.NamedModulesPlugin(), 
+    new webpack.NoEmitOnErrorsPlugin(), //不触发错误,即编译后运行的包正常运行
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
@@ -84,9 +84,10 @@ module.exports = new Promise((resolve, reject) => {
         compilationSuccessInfo: {
           messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${port}`],
         },
-        onErrors: config.dev.notifyOnErrors
-        ? utils.createNotifierCallback()
-        : undefined
+        //报错警告弹窗
+        // onErrors: config.dev.notifyOnErrors
+        // ? utils.createNotifierCallback()
+        // : undefined
       }))
 
       resolve(devWebpackConfig)

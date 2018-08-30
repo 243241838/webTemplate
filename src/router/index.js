@@ -9,6 +9,10 @@ export default new Router({
       path: '/userManage',
       name: 'userManage',
       component: userManage
+    },
+    {
+      path: '/', 
+      redirect: '/userManage' //重定向
     }
   ]
 })

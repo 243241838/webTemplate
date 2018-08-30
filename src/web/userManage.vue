@@ -1,6 +1,6 @@
 <template>
-    <div >
-      <div class="aa">4324</div>
+    <div>
+        <div class="aa">4324</div>
     </div>
 </template>
 <script>
@@ -10,13 +10,13 @@ export default {
     },
     data() {
         return {
-          
+
         }
     },
     computed: {
     },
     created() {
-        this.getTable();
+        // this.getTable();
     },
     mounted() {
     },
@@ -31,11 +31,11 @@ export default {
             }).post()
                 .then(response => {
                     if (response.code === 200) {
-                      
+
                     } else {
                         console.log(response)
                     }
-                    
+
                 })
                 .catch(error => {
                     console.log(error)
@@ -47,14 +47,9 @@ export default {
     }
 }
 </script>
-
-<!--<style lang="less" scoped>
-
-</style>-->
 <style lang='scss' scoped>
 .aa{
     color:red;
-    transform: translate(100, 100)
 }
 </style>
 

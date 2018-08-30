@@ -105,7 +105,7 @@ export default (descriptor) => {
           .then(null, err => {
             if (!axios.isCancel(err)) {
               this._token = null;
-              if (err.response.status != 200) {
+              if (err.response && err.response.status != 200) {
                 return false;
               }
               deferred.reject(err, params);

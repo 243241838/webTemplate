@@ -13,11 +13,12 @@ function resolve(dir) {
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    app: './src/main.js'
+    app: ['babel-polyfill' , './src/main.js']  //开发环境显示  360和ie babel-polyfill
   },
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
+    // 上线地址，也就是真正的文件引用路径，如果是production生产环境，其实这里都是 '/'
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
@@ -42,28 +43,29 @@ module.exports = {
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
       },
-      {
-        test: /\.scss$/,
-        use: [
-          { loader: 'style-loader' },
-          {
-            loader: 'css-loader', options: {
-              sourceMap: true, modules: true,
-              localIdentName: '[local]_[hash:base64:5]'
-            }
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true,
-              config: require('autoprefixer')
-            }
-          },
-          {
-            loader: 'sass-loader', options: { sourceMap: true }
-          }
-        ]
-      },
+      //utils.js 里有对sass的处理 这里重会报错
+      // {
+      //   test: /\.scss$/,
+      //   use: [
+      //     { loader: 'style-loader' },
+      //     {
+      //       loader: 'css-loader', options: {
+      //         sourceMap: true, modules: true,
+      //         localIdentName: '[local]_[hash:base64:5]'
+      //       }
+      //     },
+      //     {
+      //       loader: 'postcss-loader',
+      //       options: {
+      //         sourceMap: true,
+      //         config: require('autoprefixer')
+      //       }
+      //     },
+      //     {
+      //       loader: 'sass-loader', options: { sourceMap: true }
+      //     }
+      //   ]
+      // },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
