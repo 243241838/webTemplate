@@ -50,6 +50,7 @@ export default {
 <style lang='scss' scoped>
 .aa{
     color:red;
+    transform: translate(100px, 100px)
 }
 </style>
 
