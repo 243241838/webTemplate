@@ -50,6 +50,16 @@ const webpackConfig = merge(baseWebpackConfig, {
       sourceMap: config.build.productionSourceMap, //生成sourceMap文件
       parallel: true
     }),
+    
+    new webpack.optimize.UglifyJsPlugin({ //自动删除console.log
+      compress: {
+        warnings: false,
+        drop_debugger: true,
+        drop_console: true
+      },
+      sourceMap: true
+    }),
+ 
     // extract css into its own file
     new ExtractTextPlugin({ //将js中引入的css分离的插件
       filename: utils.assetsPath('css/[name].[contenthash].css'),
@@ -70,7 +80,8 @@ const webpackConfig = merge(baseWebpackConfig, {
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
-      filename: config.build.index, //删除html中的注释代码
+      // favicon: false, //ico
+      filename: config.build.index, //文件名
       template: 'index.html',  //依据的模板
       inject: true,  //注入的js文件将会被放在body标签中,当值为'head'时，将被放在head标签中
       minify: { //压缩配置

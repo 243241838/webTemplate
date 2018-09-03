@@ -17,6 +17,7 @@ export default {
     },
     created() {
         // this.getTable();
+        console.log('a')
     },
     mounted() {
     },
