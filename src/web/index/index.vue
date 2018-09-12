@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="aa">4324</div>
+        主页
     </div>
 </template>
 <script>
@@ -17,11 +17,22 @@ export default {
     },
     created() {
         // this.getTable();
-        console.log('a')
+      
     },
     mounted() {
+        this.init();
     },
     methods: {
+        init() {
+            var mySwiper = new this.$Swiper('.swiper-container', {
+                autoplay: true,//可选选项，自动滑动
+                loop: true, //无限轮播
+                // 如果需要分页器
+                pagination: {
+                    el: '.swiper-pagination'
+                },
+            })
+        },
         getTable(isseach) {
             ajax({
                 url: 'user/findPageList',
@@ -49,10 +60,7 @@ export default {
 }
 </script>
 <style lang='scss' scoped>
-.aa{
-    color:red;
-    transform: translate(100px, 100px)
-}
+@import './scss/index.scss';
 </style>
 
 

@@ -29,6 +29,11 @@ const webpackConfig = merge(baseWebpackConfig, {
     chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   plugins: [
+    //引入jquery(内置模块)
+    new webpack.ProvidePlugin({
+      jQuery: "jquery",
+      $: "jquery"
+    }),
     new cleanWepackPlugin(//先清空dist
       ['dist'],
       {
@@ -50,7 +55,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       sourceMap: config.build.productionSourceMap, //生成sourceMap文件
       parallel: true
     }),
-    
+
     new webpack.optimize.UglifyJsPlugin({ //自动删除console.log
       compress: {
         warnings: false,
@@ -59,7 +64,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       },
       sourceMap: true
     }),
- 
+
     // extract css into its own file
     new ExtractTextPlugin({ //将js中引入的css分离的插件
       filename: utils.assetsPath('css/[name].[contenthash].css'),

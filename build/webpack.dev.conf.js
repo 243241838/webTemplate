@@ -45,6 +45,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     }
   },
   plugins: [
+    //  引入jquery(内置模块)
+    new webpack.ProvidePlugin({
+      jQuery: "jquery",
+      $: "jquery"
+    }),
     new webpack.DefinePlugin({ // 编译时配置的全局变量
       'process.env': require('../config/dev.env') //当前环境为开发环境
     }),

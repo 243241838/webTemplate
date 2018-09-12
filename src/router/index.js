@@ -1,18 +1,30 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import userManage from '../web/userManage'
+import login from '../login'
+import APP from '../App';
+import index from '@/web/index/index.js';
+import product from '@/web/product'
 Vue.use(Router)
-
+const defaultRoute = {
+  path: '/',
+  component: APP,
+  children: [
+    product,
+    index
+  ]
+};
 export default new Router({
+  mode: 'history', //去掉#
   routes: [
     {
-      path: '/userManage',
-      name: 'userManage',
-      component: userManage
+      path: '/login',
+      name: 'login',
+      component: login,
     },
-    {
-      path: '/', 
-      redirect: '/userManage' //重定向
-    }
+    // {
+    //   path: '/',
+    //   redirect: '/login' //重定向
+    // },
+    defaultRoute
   ]
 })

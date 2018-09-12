@@ -5,7 +5,13 @@ import Vuex from 'vuex';
 import router from './router';
 import store from './store';
 import * as filters from './filters/index.js'
-import '@/assets/scss/commin.scss'
+import '@/assets/scss/reset.scss'; //重置样式
+import Cookies from 'js-cookie';
+import Swiper from 'swiper';
+// 赋值到Vue的原型上面，在页面就可以使用this.$ + name获取到了
+Vue.prototype.$Swiper = Swiper;
+Vue.prototype.$Cookies = Cookies;
+
 //全局过滤器
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
