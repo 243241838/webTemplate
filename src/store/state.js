@@ -1,9 +1,5 @@
 import Cookies from 'js-cookie';
 const state = {
-    user: null,
-    token:'',
-    addRouter: [],
-    isCollapse: false,
-    wmain: false
+    user: '435'
 }
 export default state;
