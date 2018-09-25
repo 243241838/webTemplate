@@ -34,14 +34,14 @@ const webpackConfig = merge(baseWebpackConfig, {
       jQuery: "jquery",
       $: "jquery"
     }),
-    new cleanWepackPlugin(//先清空dist
-      ['dist'],
-      {
-        root: path.resolve(__dirname, '../'), //根目录
-        verbose: true, //开启在控制台输出信息
-        dry: false //启用删除文件
-      }
-    ),
+    // new cleanWepackPlugin(//先清空dist
+    //   ['dist'],
+    //   {
+    //     root: path.resolve(__dirname, '../'), //根目录
+    //     verbose: true, //开启在控制台输出信息
+    //     dry: false //启用删除文件
+    //   }
+    // ),
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': env //配置全局环境为生产环境
@@ -49,22 +49,16 @@ const webpackConfig = merge(baseWebpackConfig, {
     new UglifyJsPlugin({ //js文件压缩插件
       uglifyOptions: {
         compress: {   //压缩配置
-          warnings: false  // 不显示警告
+          warnings: false,  // 不显示警告
+          // dead_code: true, //移除没被引用的代码
+          drop_debugger: true, //移除 debugger;
+          drop_console: true, //不显示conlog
+          // passes: 1 //默认1  其他大于1， 越大压缩时间越长
         }
       },
       sourceMap: config.build.productionSourceMap, //生成sourceMap文件
       parallel: true
     }),
-
-    new webpack.optimize.UglifyJsPlugin({ //自动删除console.log
-      compress: {
-        warnings: false,
-        drop_debugger: true,
-        drop_console: true
-      },
-      sourceMap: true
-    }),
-
     // extract css into its own file
     new ExtractTextPlugin({ //将js中引入的css分离的插件
       filename: utils.assetsPath('css/[name].[contenthash].css'),
