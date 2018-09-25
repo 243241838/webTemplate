@@ -28,10 +28,11 @@ export default {
     },
     created() {
         // this.getTable();
-        console.log(this.$store.getters.user)
+        // console.log(this.$store.getters.user)
 
     },
     mounted() {
+        console.log(this.$route.meta) //获取当前meta
         this.init();
     },
     methods: {

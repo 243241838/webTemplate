@@ -24,8 +24,19 @@ Vue.use(Vuex);
 
 //全局钩子作用于所有路由，里面的参数to表示即将要进入的路由对象，from表示即将要离开的路由对象 路由进入之前
 router.beforeEach((to, from, next) => {
-  if (to.path == '/') {
-    next();
+  // if (to.path == '/') {
+  //   next();
+  // }
+  /* 路由发生变化修改页面meta */ //搜索关键字什么的可以使用
+  if (to.meta.content) {
+    let head = document.getElementsByTagName('head');
+    let meta = document.createElement('meta');
+    meta.content = to.meta.content;
+    head[0].appendChild(meta)
+  }
+  /* 路由发生变化修改页面title */
+  if (to.meta.title) {
+    document.title = to.meta.title;
   }
   next();
 

@@ -1,5 +1,4 @@
 import Template from '@/template';
-import index from './index.vue';
 export default {
     path: '/',
     component: Template,
@@ -10,9 +9,10 @@ export default {
         {
             path: 'index',
             name: 'index',
-            component: index,
+            component: resolve => require(['./index.vue'], resolve),
             meta: {
-                title: '主页'
+                title: '主页',
+                content: '32453'
             }
         },
         {

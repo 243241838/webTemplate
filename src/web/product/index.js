@@ -1,6 +1,4 @@
 import Template from '@/template';
-import userManage from './userManage'; //上架管理
-
 export default {
     path: '/product',
     component: Template,
@@ -11,7 +9,7 @@ export default {
         {
             path: 'userManage',
             name: 'product_userManage',
-            component: userManage,
+            component:  resolve => require(['./userManage'], resolve),
             meta: {
                 title: '产品'
             }

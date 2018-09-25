@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import login from '../login'
 import APP from '../App';
 import index from '@/web/index/index.js';
 import product from '@/web/product'
@@ -19,7 +18,10 @@ export default new Router({ //路由懒加载
     {
       path: '/login',
       name: 'login',
-      component: resolve => require(['../login'], resolve)
+      component: resolve => require(['../login'], resolve),
+      meta: {
+        title: '登录'
+      }
     },
     // {
     //   path: '/',
