@@ -9,11 +9,19 @@ export default {
         {
             path: 'userManage',
             name: 'product_userManage',
-            component:  resolve => require(['./userManage'], resolve),
+            component: resolve => require(['./userManage'], resolve),
+            meta: {
+                title: '产品'
+            }
+        },
+        {
+            path: 'upload',
+            name: 'product_upload',
+            component: resolve => require(['./upload'], resolve),
             meta: {
                 title: '产品'
             }
         }
     ]
-    
+
 }
