@@ -11,7 +11,7 @@
             <slot></slot>
             <footer class="load-more">
                 <slot name="load-more">
-                    <span>加载中……</span>
+                    <span class="text">加载中……</span>
                 </slot>
             </footer>
         </section>
@@ -76,7 +76,7 @@ export default {
                 this.state = 0
             }
         },
-        touchEnd(e) { //松开
+        touchEnd(e) { //松开更新
             if (!this.enableRefresh) return
             this.touching = false
             if (this.state === 2) { // in refreshing
@@ -94,19 +94,20 @@ export default {
         refresh() {
             this.state = 2
             this.top = this.offset
-            this.onRefresh(this.refreshDone)
+            this.onRefresh(this.refreshDone, true)
         },
         refreshDone() {
-            this.state = 0
-            this.top = 0
+            this.state = 0;
+            this.top = 0;
         },
 
         infinite() {
-            this.infiniteLoading = true
+            this.infiniteLoading = true;
             this.onInfinite(this.infiniteDone)
         },
 
         infiniteDone() {
+            console.log('bbbbb')
             this.infiniteLoading = false
         },
 
@@ -182,5 +183,8 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    &.load-more1 {
+        display: none;
+    }
 }
 </style>

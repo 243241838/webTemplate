@@ -40,25 +40,24 @@ export default {
             }).fetch()
                 .then(response => {
                     this.listdata = response.slice(0, this.num);
+                    this.downdata = [];
                 })
                 .catch(error => {
                     console.log(error)
                 })
         },
         onRefresh(done) {
+            this.counter = 1;//默认已经显示出15条数据 count等于一是让从16条开始加载
             this.getList();
-
             done()
-
         },
-        onInfinite(done) {
-            console.log('a')
+        onInfinite(done) { //滑动
             ajax({
                 url: '/repos/typecho-fans/plugins/contents/',
                 optionParams: {}
             }).fetch()
                 .then(response => {
-                    this.counter ++;
+                    this.counter++;
                     this.pageEnd = this.num * this.counter;
                     this.pageStart = this.pageEnd - this.num;
                     let arr = response;
@@ -69,7 +68,7 @@ export default {
                         obj['name'] = arr[i].name;
                         this.downdata.push(obj);
                         if ((i + 1) >= response.length) {
-                            this.$el.querySelector('.load-more').style.display = 'none';
+                            this.$el.querySelector('.load-more').querySelector('.text').innerHTML = '没有数据了'
                             return;
                         }
                     }

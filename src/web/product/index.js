@@ -19,7 +19,7 @@ export default {
             name: 'product_upload',
             component: resolve => require(['./upload'], resolve),
             meta: {
-                title: '产品'
+                title: '下拉刷新'
             }
         }
     ]
